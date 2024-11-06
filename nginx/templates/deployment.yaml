@@ -5,23 +5,19 @@ metadata:
   # these labels are deployment related labels
   labels:
     app: nginx
-    purpose: deployment
-    tier: web
+    purpose: helm
 spec:
   replicas: {{ .Values.deployment.replicas }}
   selector:
     matchLabels:
       app: nginx
-      tier: web
-      project: test-project
+      purpose: helm
   # pod definition
   template:
     metadata:
       labels:
         app: nginx
-        tier: web
-        project: test-project
-        extra-key: extra-value
+        purpose: helm  
     spec:
       containers:
       - name: nginx
